@@ -1,0 +1,17 @@
+[Unit]
+Description=API Luanti - Lanzador de contenedores
+After=network.target postgresql.service
+
+[Service]
+User=usuario
+WorkingDirectory=/home/usuario/daemon_web
+ExecStart=/usr/bin/python3 /home/usuario/daemon_web/api_launcher.py
+Restart=always
+RestartSec=10
+
+Environment="PATH=/usr/bin"
+Environment="PYTHONUNBUFFERED=1"
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
